@@ -27,3 +27,16 @@ data/MP5/ACOG[[:space:]]1.png filter=lfs diff=lfs merge=lfs -text
 data/MP5/SKin4.png filter=lfs diff=lfs merge=lfs -text
 data/MP5/Skin[[:space:]]2.png filter=lfs diff=lfs merge=lfs -text
 data/MP5/Skin[[:space:]]3.png filter=lfs diff=lfs merge=lfs -text
+weapons filter=lfs diff=lfs merge=lfs -text
+weapons/DB.png filter=lfs diff=lfs merge=lfs -text
+weapons/HuntingRifle.png filter=lfs diff=lfs merge=lfs -text
+weapons/Knife.png filter=lfs diff=lfs merge=lfs -text
+weapons/L96.png filter=lfs diff=lfs merge=lfs -text
+weapons/MP5.png filter=lfs diff=lfs merge=lfs -text
+weapons/RPG.png filter=lfs diff=lfs merge=lfs -text
+weapons/RayGun.png filter=lfs diff=lfs merge=lfs -text
+weapons/p90.png filter=lfs diff=lfs merge=lfs -text
+weapons/Ak47.png filter=lfs diff=lfs merge=lfs -text
+weapons/Deagle.png filter=lfs diff=lfs merge=lfs -text
+weapons/Revolver.png filter=lfs diff=lfs merge=lfs -text
+weapons/Spaz12.png filter=lfs diff=lfs merge=lfs -text
