@@ -1,4 +1,9 @@
 # (x, y) starting points
-skins_coords_dict = {
-    'ak47': [22, 15]
+properties = {
+    'ak47': {
+        'skin': [22, 15],
+        'pendants': [],
+        ''
+    }
 }
+;

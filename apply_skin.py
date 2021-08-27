@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def apply_skin(weapon: np.ndarray, skin: np.ndarray):
     assert weapon.shape == skin.shape
     assert skin.shape[-1] == 4

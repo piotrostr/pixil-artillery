@@ -1,5 +1,7 @@
+import numpy as np
 
-def crop_weapon(img):
+
+def crop_weapon(img: np.ndarray):
     _img = jpgize(img)
     h, w, c = _img.shape
     to_idx = int(h*0.8)
@@ -22,3 +24,4 @@ def crop_weapon(img):
             lower_idx = row
             break
     return img[from_idx + upper_idx: from_idx + lower_idx, left_idx:]
+
