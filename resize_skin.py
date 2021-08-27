@@ -1,10 +1,10 @@
 import numpy as np
 
-from skins_coords_dict import skins_coords_dict
+from properties import properties
 from jpgize import jpgize
 
 
-def get_bottom_px(skin):
+def get_bottom_px(skin: np.ndarray):
     _skin = jpgize(skin)
     white_px = [255, 255, 255]
     start_idx = None
@@ -13,14 +13,14 @@ def get_bottom_px(skin):
             return (idx, _skin.shape[0])
 
 
-def create_filler(h, w):
+def create_filler(h: int, w: int):
     row = [[255, 255, 255, 0] for i in range(w)]
     return np.array([row for i in range(h)]).astype(np.uint8)
 
 
-def adjust_skin_size(skin, weapon_name):
+def adjust_skin_size(skin: np.ndarray, weapon_name: str):
     sx, sy = get_bottom_px(skin)
-    wx, wy = skins_coords_dict['weapon_name']
+    wx, wy = skins_coords_dict[weapon_name]
     wh, ww, wc = ak47.shape
     _skin = skin.copy()
     h, w, c = _skin.shape
@@ -35,5 +35,6 @@ def adjust_skin_size(skin, weapon_name):
     h, w, c = _skin.shape
     filler_right = create_filler(h, ww - w)
     _skin = np.concatenate((_skin, filler_right), axis=1)
+    # todo cover the case when the skin is over the actual weapon
     return _skin
 

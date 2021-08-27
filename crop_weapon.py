@@ -1,5 +1,3 @@
-import cv2
-
 
 def crop_weapon(img):
     _img = jpgize(img)
@@ -24,4 +22,3 @@ def crop_weapon(img):
             lower_idx = row
             break
     return img[from_idx + upper_idx: from_idx + lower_idx, left_idx:]
-
