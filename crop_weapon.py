@@ -2,10 +2,7 @@ import cv2
 
 
 def crop_weapon(img):
-    _img = img.copy()
-    mask = _img[:, :, 3] == 0
-    _img[mask] = [255, 255, 255, 255]
-    _img = cv2.cvtColor(_img, cv2.COLOR_BGRA2BGR)
+    _img = jpgize(img)
     h, w, c = _img.shape
     to_idx = int(h*0.8)
     from_idx = int(h*0.25)
@@ -27,3 +24,11 @@ def crop_weapon(img):
             lower_idx = row
             break
     return img[from_idx + upper_idx: from_idx + lower_idx, left_idx:]
+
+
+def jpgize(img):
+    _img = img.copy()
+    mask = _img[:, :, 3] == 0
+    _img[mask] = [255, 255, 255, 255]
+    _img = cv2.cvtColor(_img, cv2.COLOR_BGRA2BGR)
+    return _img
