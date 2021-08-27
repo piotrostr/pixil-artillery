@@ -18,11 +18,12 @@ def create_filler(h: int, w: int):
     return np.array([row for i in range(h)]).astype(np.uint8)
 
 
-def adjust_skin_size(skin: np.ndarray, weapon_name: str):
+def resize(skin: np.ndarray, weapon: np.ndarray, weapon_name: str):
     sx, sy = get_bottom_px(skin)
     wx, wy = skins_coords_dict[weapon_name]
     wh, ww, wc = ak47.shape
     _skin = skin.copy()
+    _weapon = weapon.copy()
     h, w, c = _skin.shape
     filler_left = create_filler(h, wx - sx)
     _skin = np.concatenate((filler_left, _skin), axis=1)
@@ -36,5 +37,5 @@ def adjust_skin_size(skin: np.ndarray, weapon_name: str):
     filler_right = create_filler(h, ww - w)
     _skin = np.concatenate((_skin, filler_right), axis=1)
     # todo cover the case when the skin is over the actual weapon
-    return _skin
+    return _skin, _weapon
 
