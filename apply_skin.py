@@ -12,4 +12,3 @@ def apply_skin(weapon: np.ndarray, skin: np.ndarray):
                 # if not transparent
                 _weapon[row_idx, px_idx] = skin[row_idx, px_idx]
     return _weapon
-
