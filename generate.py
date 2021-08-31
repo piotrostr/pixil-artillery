@@ -14,7 +14,7 @@ class Generate:
         skin: np.ndarray,
     ):
         self.skin = skin
-        self.properties = properties[weapon_name]
+        self.properties = properties[weapon_name].copy()
         self.weapon = cv2.imread(f'./weapons/{weapon_name}.png',
                                  cv2.IMREAD_UNCHANGED)
         self.attachments = []
@@ -92,6 +92,7 @@ class Generate:
 
         # add the attachments
         for name, attachment in self.attachments:
+            # separate the attachments and their upper-left badegs
             _attachment = self.resize(attachment, name)
             self.apply(_attachment)
 
