@@ -3,13 +3,13 @@
 properties = {
     'ak47': {
         'skin': [22, 15],
-        'pendants': [1, 1],  
+        'pinata': [1, 1],  
         'acog': [16, 8],
         'green_laser': [37, 20],
         'red_laser': [36, 11], 
         'holo': [17, 7],
         'red_dot': [18, 7],
-        'suppressor': [53, 14],
+        'ak47_suppressor': [53, 7],
         'g_launcher': [37, 20],
         'flamethrower': [29, 20],
         'thermal': [17, 7]

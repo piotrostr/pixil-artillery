@@ -13,14 +13,15 @@ class Generate:
         attachments: list[str],
         skin: np.ndarray,
     ):
+        self.skin = skin
         self.properties = properties[weapon_name]
-        print(self.properties)
         self.weapon = cv2.imread(f'./weapons/{weapon_name}.png',
                                  cv2.IMREAD_UNCHANGED)
-        self.attachments = [cv2.imread(f'./attachments/{i}.png',
-                                       cv2.IMREAD_UNCHANGED)
-                            for i in attachments]
-        self.skin = skin
+        self.attachments = []
+        for name in attachments:
+            attatchment = cv2.imread(f'./attachments/{name}.png', 
+                                     cv2.IMREAD_UNCHANGED)
+            self.attachments.append([name, attatchment])
     
     def resize(self, dat: np.ndarray, dat_name: str) -> np.ndarray:
         dx, dy = get_bottom_px(dat)
@@ -84,11 +85,16 @@ class Generate:
     def __call__(self):
         # widen the weapon
         self.widen_weapon_and_update_properties()
+
+        # apply the skin
         skin = self.resize(self.skin, 'skin')
         self.apply(skin)
 
-        # apply the skin
         # add the attachments
+        for name, attachment in self.attachments:
+            _attachment = self.resize(attachment, name)
+            self.apply(_attachment)
+
         # add the caption and scope bits
         # add background
         plt.imshow(self.weapon)
@@ -97,7 +103,7 @@ class Generate:
 
 if __name__ == '__main__':
     weapon_name = 'ak47'
-    attachments = ['suppressor', 'holo', 'piniata']
-    skin = cv2.imread('./skins/ak47/1.png')
+    attachments = ['ak47_suppressor', 'holo', 'pinata']
+    skin = cv2.imread('./skins/ak47/Skin 1.png', cv2.IMREAD_UNCHANGED)
     Generate(weapon_name, attachments, skin)()
 
