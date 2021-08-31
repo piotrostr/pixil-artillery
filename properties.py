@@ -1,9 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
-from jpgize import jpgize
-
-
 # (x, y) - the most bottom points, except for pendants (most upper)
 # todo the piniatas might need to be a unit lower or from the bottom px
 properties = {
@@ -47,15 +41,4 @@ properties = {
         'thermal': [3, -1]
     }
 }
-
-
-def show_px(weapon: np.ndarray, px: list[int, int]):
-    _weapon = jpgize(weapon)
-    _weapon[px[1], px[0]] = [255, 0, 0]
-    fig, ax = plt.subplots(figsize=(20, 20))
-    ax.imshow(_weapon)
-    ax.grid(b=True)
-    ax.xaxis.set_ticks(np.arange(0, _weapon.shape[1], 1))
-    ax.yaxis.set_ticks(np.arange(0, _weapon.shape[0], 1))
-    plt.show()
     
