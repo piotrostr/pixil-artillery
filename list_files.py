@@ -17,3 +17,7 @@ def list_files():
                 ldir = os.listdir('weapons/' + weapon + '/' + subdir)
             print(f"{subdir:<10} {len(ldir):<4}", end='  ')
 
+
+if __name__ == '__main__':
+    list_files()
+

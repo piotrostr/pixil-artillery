@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class NFT:
@@ -10,7 +11,9 @@ class NFT:
             pendant: str,
             scope: str,              
             background: str,        
-            attachments: list[str] = list
+            attachments: list[str] = list,
+            show=False,
+            save=True
         ):
         """
         :params weapon, skin, pendant, attachments, scope, background:
@@ -18,6 +21,7 @@ class NFT:
         """
         if not background or not weapon: 
             raise Exception('background and weapon are required')
+        self.weapon_name = weapon
         self.nft = cv2.imread(weapon, -1) 
         self.attachments = [cv2.imread(att, -1) 
                            for att in attachments]
@@ -25,6 +29,8 @@ class NFT:
         self.scope = cv2.imread(scope, -1) if scope else None
         self.background = cv2.imread(background, -1)
         self.pendant = cv2.imread(pendant, -1) if pendant else None
+        self.show = show
+        self.save = save
     
     def apply(self, dat: np.ndarray):
         h, w, c = self.nft.shape
@@ -39,7 +45,7 @@ class NFT:
                 if self.nft[row_idx, px_idx][-1] == 0:
                     self.nft[row_idx, px_idx] = self.background[row_idx, px_idx]
 
-    def __call__(self, idx):
+    def __call__(self, weapon_name, idx):
         if self.skin is not None:
             self.apply(self.skin)
         if self.pendant is not None:
@@ -50,8 +56,11 @@ class NFT:
             for attachment in self.attachments:
                 self.apply(attachment)
         self.fill()
-        if False:
-            cv2.imwrite(f'{weapon_name}/{idx}.png', self.nft)
-        plt.imshow(cv2.cvtColor(self.nft, cv2.COLOR_BGRA2RGBA))
-        plt.show()
+        if self.save:
+            ok = cv2.imwrite(f'output/{weapon_name}/{idx}.png', self.nft)
+            if not ok:
+                raise Exception('saving failed')
+        if self.show:
+            plt.imshow(cv2.cvtColor(self.nft, cv2.COLOR_BGRA2RGBA))
+            plt.show()
 
