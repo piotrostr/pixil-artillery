@@ -3,7 +3,7 @@
 properties = {
     'ak47': {
         'skin': [22, 15],
-        'pendants': [0, 0],
+        'pendants': [1, 1],  
         'acog': [16, 8],
         'green_laser': [37, 20],
         'red_laser': [36, 11], 
@@ -16,7 +16,7 @@ properties = {
     },
     'db': {
         'skin': [16, 4],
-        'pendants': [0, 0],  
+        'pendants': [1, 1],  
         'red_laser': [31, -1], 
         'green_laser': [31, 4],
         'acog': [8, 0],

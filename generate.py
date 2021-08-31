@@ -13,7 +13,8 @@ class Generate:
         attachments: list[str],
         skin: np.ndarray,
     ):
-        self.properties = properties
+        self.properties = properties[weapon_name]
+        print(self.properties)
         self.weapon = cv2.imread(f'./weapons/{weapon_name}.png',
                                  cv2.IMREAD_UNCHANGED)
         self.attachments = [cv2.imread(f'./attachments/{i}.png',
@@ -23,7 +24,7 @@ class Generate:
     
     def resize(self, dat: np.ndarray, dat_name: str) -> np.ndarray:
         dx, dy = get_bottom_px(dat)
-        wx, wy = self.properties[self.weapon_name][dat_name]
+        wx, wy = self.properties[dat_name]
         wh, ww, wc = self.weapon.shape
         _dat = dat.copy()
         h, w, c = _dat.shape
@@ -61,14 +62,14 @@ class Generate:
         filler = create_filler(h, fill_size)
         self.weapon = np.concatenate((self.weapon, filler), axis=1)
         
-        h, w, c = _weapon.shape
+        h, w, c = self.weapon.shape
         filler = create_filler(fill_size, w)
         self.weapon = np.concatenate((self.weapon, filler), axis=0)
 
         h, w, c = self.weapon.shape
         filler = create_filler(h, fill_size)
         self.weapon = np.concatenate((filler, self.weapon), axis=1)
-        for k, [x, y] in _properties.items():
+        for k, [x, y] in self.properties.items():
             self.properties[k] = [x + fill_size, y]
             
     def apply(self, dat: np.ndarray):
@@ -97,10 +98,6 @@ class Generate:
 if __name__ == '__main__':
     weapon_name = 'ak47'
     attachments = ['suppressor', 'holo', 'piniata']
-    Generate(
-
-
-        weapon_name: str, 
-        attachments: list[str],
-        skin: np.ndarray,
+    skin = cv2.imread('./skins/ak47/1.png')
+    Generate(weapon_name, attachments, skin)()
 
