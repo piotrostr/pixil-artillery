@@ -43,9 +43,10 @@ class NFT:
         for row_idx in range(100):
             for px_idx in range(100):
                 if self.nft[row_idx, px_idx][-1] == 0:
-                    self.nft[row_idx, px_idx] = self.background[row_idx, px_idx]
+                    self.nft[row_idx, px_idx] = self.background[row_idx, 
+                                                                px_idx]
 
-    def __call__(self, weapon_name, idx):
+    def __call__(self, idx):
         if self.skin is not None:
             self.apply(self.skin)
         if self.pendant is not None:
@@ -57,7 +58,7 @@ class NFT:
                 self.apply(attachment)
         self.fill()
         if self.save:
-            ok = cv2.imwrite(f'output/{weapon_name}/{idx}.png', self.nft)
+            ok = cv2.imwrite(f'output/{idx}.png', self.nft)
             if not ok:
                 raise Exception('saving failed')
         if self.show:
