@@ -11,12 +11,12 @@ rarity = {
         'ak47': 175,
         'tar': 150,
         'rpg': 100,
-        'raygun': 40,
+        'ray': 40,
         'knife': 10
     },
     'keychains': {
         'vanilla': 2500,
-        'clover': 1000,
+        'leaf': 1000,
         'disco': 500,
         'dice': 400,
         'medal': 350,
@@ -29,10 +29,9 @@ rarity = {
         'red': 250
     },
     'scopes': {
-        'iron': 875,
-        'vanilla': 875,
+        'vanilla': 1750,
         'acog': 1000,
-        'red_dot': 1250,
+        'dot': 1250,
         'holo': 750,
         'thermal': 250
     },
