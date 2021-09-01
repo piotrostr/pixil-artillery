@@ -132,3 +132,6 @@ data
 
 .swp
 *.swp
+
+output
+output.zip

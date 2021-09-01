@@ -1,6 +1,25 @@
+import numpy as np
+
 from glob import glob
 from nft import NFT
 from itertools import combinations
+from rarity import rarity
+
+
+def generate_boxes(rarity):
+    boxes = dict(
+        weapons = [],
+        keychains = [],
+        backgrounds = [],
+        scopes = [],
+        skins = []
+    )
+    for category, values in rarity.items():
+        for k, v in values.items():
+            boxes[category] += [k for i in range(v)]
+    for name, box in boxes.items():
+        assert len(box) == 5000 
+    return boxes
 
 
 def main_generative_loop(weapon_name):
@@ -11,11 +30,12 @@ def main_generative_loop(weapon_name):
     pendants = glob(path + 'pendants/*.png')
     atts = glob(path + 'attachments/*.png')
     att_combinations = []
-    att_combinations += list(combinations(atts, 1))
-    att_combinations += list(combinations(atts, 2))
-    att_combinations += list(combinations(atts, 3))
-    att_combinations += list(combinations(atts, 4))
+    for i in range(1, len(atts)):
+        att_combinations += list(combinations(atts, i))
+    for i in range(1, len(atts)):
+        att_combinations.append('vanilla')
     att_combinations = [list(i) for i in att_combinations]
+
     scopes = glob(path + 'scopes/*.png')
     backgrounds = glob('backgrounds/*.png')
     i = 0
@@ -37,10 +57,21 @@ def main_generative_loop(weapon_name):
                             scope=scope,
                             background=background,
                         )(weapon_name, i)
-    # todo include no pendant, no skin and so on
-    # there is 28,404 possibilities so I guess sth is gonna be different
-                   
+
 
 if __name__ == '__main__':
-    main_generative_loop('ak47')
+    generate_boxes(rarity)
+
+
+# l96 has iron sight and also a base sight
+
+# half iron sight, half regular scope 
+
+# tar make the weapon 
+
+
+# 27 
+
+# 677.341  
+# 488
 
