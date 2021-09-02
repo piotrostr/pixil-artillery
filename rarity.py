@@ -11,7 +11,7 @@ rarity = {
         'ak47': 175,
         'tar': 150,
         'rpg': 100,
-        'ray': 40,
+        'ray_gun': 40,
         'knife': 10
     },
     'keychains': {

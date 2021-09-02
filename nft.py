@@ -34,6 +34,7 @@ class NFT:
     
     def apply(self, dat: np.ndarray):
         h, w, c = self.nft.shape
+        assert self.nft.shape == (100, 100, 4)
         for row_idx in range(100):
             for px_idx in range(100):
                 if dat[row_idx, px_idx][-1] != 0:
@@ -42,7 +43,7 @@ class NFT:
     def fill(self):
         for row_idx in range(100):
             for px_idx in range(100):
-                if self.nft[row_idx, px_idx][-1] == 0:
+                if self.nft[row_idx, px_idx][-1] < 25:
                     self.nft[row_idx, px_idx] = self.background[row_idx, 
                                                                 px_idx]
 
