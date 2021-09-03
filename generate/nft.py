@@ -59,7 +59,7 @@ class NFT:
                 self.apply(attachment)
         self.fill()
         if self.save:
-            ok = cv2.imwrite(f'output/{idx}.png', self.nft)
+            ok = cv2.imwrite(f'../art/{idx}.png', self.nft)
             if not ok:
                 raise Exception('saving failed')
         if self.show:

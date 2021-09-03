@@ -2,11 +2,6 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Web3ReactProvider } from '@web3-react/core'
 import Web3 from 'web3'
 
-function getLibrary(provider) {
-  const library = new Web3(provider)
-  library.pollingInterval = 12000
-  return library
-}
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -22,6 +17,11 @@ const theme = {
   },
 }
 
+function getLibrary(provider) {
+  const library = new Web3(provider)
+  library.pollingInterval = 12000
+  return library
+}
 
 function MyApp({ Component, pageProps }) {
   return (

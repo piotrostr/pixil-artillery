@@ -93,3 +93,8 @@ def main_loop():
 if __name__ == '__main__':
     main_loop()
 
+
+# upper left px shortage - ak47, db, revolver
+# swap suppressors etc
+# make the contract and the web3 on the website
+

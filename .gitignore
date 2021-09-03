@@ -134,10 +134,7 @@ data
 *.swp
 
 output
-output.zip
-
 weapons
-final.zip
-fixed.zip
-
+art
 node_modules
+
