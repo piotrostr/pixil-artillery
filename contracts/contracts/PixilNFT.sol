@@ -26,7 +26,7 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
     string public _baseTokenUri = 'https://base-uri';
     uint public totalSupply = 5000;
     uint public currentTokenId = 0;
-    uint public cost = 1;
+    uint public cost = 30000000000000000;
     
     constructor(
         string memory _name, 
@@ -37,12 +37,11 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
         _initializeEIP712(_name);
     }
 
-    function mintTo(address _to) public onlyOwner payable {
+    function mintTo(address _to) public payable {
         require(msg.value > cost, 'Not enough ETH sent; check price!');
         uint256 newTokenId = _getNextTokenId();
         _mint(_to, newTokenId);
         _incrementTokenId();
-        totalSupply = totalSupply.sub(1);
     }
 
     function _getNextTokenId() private view returns (uint256) {
