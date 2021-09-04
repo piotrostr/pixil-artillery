@@ -22,7 +22,7 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
     using SafeMath for uint;
 
     address public proxyRegistryAddress;
-    string public imageHash = '';
+    string public imageHash = '0x00';
     string public _baseTokenUri = 'https://base-uri';
     uint public totalSupply = 5000;
     uint public currentTokenId = 0;
@@ -40,6 +40,7 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
         uint256 newTokenId = _getNextTokenId();
         _mint(_to, newTokenId);
         _incrementTokenId();
+        totalSupply = totalSupply.sub(1);
     }
 
     function _getNextTokenId() private view returns (uint256) {
