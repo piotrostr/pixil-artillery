@@ -3,23 +3,85 @@
 pragma solidity ^0.8.0;
 
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import '@openzeppelin/contracts/access/Ownable.sol';
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-contract PixilNFT is ERC721('PixilArtillery', 'PXART'), Ownable {
+import "./meta-transactions/ContextMixin.sol";
+import "./meta-transactions/NativeMetaTransaction.sol";
 
+contract OwnableDelegateProxy {}
+
+contract ApprovedSpenderContract {}  // this one is a mock for tests
+
+contract ProxyRegistry {
+  mapping(address => OwnableDelegateProxy) public proxies;
+}
+
+contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
+    using SafeMath for uint;
+
+    address public proxyRegistryAddress;
     string public imageHash = '';
-
-    string public baseUri = 'https://base-uri';
-
+    string public _baseTokenUri = 'https://base-uri';
     uint public totalSupply = 5000;
+    uint public currentTokenId = 0;
+    
+    constructor(
+        string memory _name, 
+        string memory _symbol,
+        address _proxyRegistryAddress
+    ) ERC721(_name, _symbol) {
+        proxyRegistryAddress = _proxyRegistryAddress;
+        _initializeEIP712(_name);
+    }
 
-    function updateBaseUri(string memory _baseUri) public onlyOwner returns (bool) {
-        baseUri = _baseUri;
+    function mintTo(address _to) public onlyOwner {
+        uint256 newTokenId = _getNextTokenId();
+        _mint(_to, newTokenId);
+        _incrementTokenId();
+    }
+
+    function _getNextTokenId() private view returns (uint256) {
+        return currentTokenId.add(1);
+    }
+
+    function _incrementTokenId() private {
+        currentTokenId++;
+    }
+
+    function baseTokenURI() virtual public view returns (string memory) {
+        return _baseTokenUri;
+    }
+
+    function setBaseTokenURI(string memory _uri) public onlyOwner returns (bool ok)
+    {
+        _baseTokenUri = _uri;
         return true;
     }
 
-    function _baseURI() internal view override returns (string memory) {
-        return baseUri;
+    function tokenURI(uint256 _tokenId) override public view  returns (string memory)
+    {
+        return string(abi.encodePacked(baseTokenURI(), Strings.toString(_tokenId)));
+    }
+
+    function isApprovedForAll(address owner, address operator)
+        override
+        public
+        view
+        returns (bool)
+    {
+        // whitelist OpenSea proxy contract for easy trading.
+        ProxyRegistry proxyRegistry = ProxyRegistry(proxyRegistryAddress);
+        if (address(proxyRegistry.proxies(owner)) == operator) {
+            return true;
+        }
+
+        return super.isApprovedForAll(owner, operator);
+    }
+
+    function _msgSender() internal override view returns (address sender) {
+      return ContextMixin.msgSender();
     }
 }
 
