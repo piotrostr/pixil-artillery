@@ -48,11 +48,17 @@ contract('PixilNFT', function ([owner, ...accounts]) {
   it('should be able to withdraw the eth from minting', async function() {
     let payAmount = await web3.eth.getBalance(instance.address)
     let initialOwnerBalance = await web3.eth.getBalance(owner)
-    let tx = await instance.withdraw()
+    const tx = await instance.withdraw()
+    const hash = tx.tx
+    const transaction = await web3.eth.getTransaction(hash)
+    const gasPrice = transaction.gasPrice
+    const receipt = await web3.eth.getTransactionReceipt(hash)
+    const gasUsed = Number(receipt.gasUsed)
+    const gasCost = gasUsed * gasPrice
     let ownerBalance = await web3.eth.getBalance(owner)
-    let gas = tx.receipt.gasUsed
-    assert.equal(ownerBalance - initialOwnerBalance, payAmount)
-    // there is some 2% of the amount missing? 
+    ownerBalance = Number(ownerBalance)
+    initialOwnerBalance = Number(initialOwnerBalance)
+    assert.equal(ownerBalance - initialOwnerBalance + gasCost, payAmount)
   })
 
   it('should be able to trade on opensea', async function() {
