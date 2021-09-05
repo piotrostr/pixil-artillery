@@ -23,7 +23,7 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
 
     address public proxyRegistryAddress;
     string public imageHash = '0x00';
-    string public _baseTokenUri = 'https://base-uri';
+    string public _baseTokenUri = 'https://pixil-artillery.s3.us-east-2.amazonaws.com/';
     uint public totalSupply = 5000;
     uint public currentTokenId = 0;
     uint public cost = 30000000000000000;

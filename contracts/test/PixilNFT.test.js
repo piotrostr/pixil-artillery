@@ -61,54 +61,18 @@ contract('PixilNFT', function ([owner, ...accounts]) {
     assert.equal(ownerBalance - initialOwnerBalance + gasCost, payAmount)
   })
 
-  it('should be able to trade on opensea', async function() {
-  })
-
   it('should retrieve the uri correctly', async function() {
+    const uri = await instance.baseTokenURI()
+    assert.equal(uri, 'https://pixil-artillery.s3.us-east-2.amazonaws.com/')
   })
 
   it('should be able to update the uri', async function() {
+    await instance.setBaseTokenURI('foo')
+    assert.equal(await instance.baseTokenURI(), 'foo')
   })
 
-  it("should allow calling setApprovalForAll with a meta transaction", async function () {
-    return  // todo make this one work
-    const wallet = new MockProvider().createEmptyWallet();
-    const user = await wallet.getAddress()
-    let name = await instance.name();
-    let nonce = await instance.getNonce(user);
-    let version = await instance.ERC712_VERSION();
-    let chainId = await instance.getChainId();
-    let domainData = {
-      name: name,
-      version: version,
-      verifyingContract: instance.address,
-      salt: '0x' + web3.utils.toHex(chainId).substring(2).padStart(64, '0'),
-    };
-    const functionSignature = await web3ERC1155.methods.setApprovalForAll(approvedContract.address, true).encodeABI()
-    let { r, s, v } = await signMetaTransaction(
-      wallet,
-      nonce,
-      domainData,
-      functionSignature
-    );
+  it('should be able to trade on opensea', async function() {
+  })
 
-    assert.equal(await instance.isApprovedForAll(user, approvedContract.address), false);
-    truffleAssert.eventEmitted(
-      await instance.executeMetaTransaction(
-	user,
-	functionSignature,
-	r,
-	s,
-	v
-      ),
-      'ApprovalForAll',
-      {
-	account: user,
-	operator: approvedContract.address,
-	approved: true
-      }
-    );
-    assert.equal(await instance.isApprovedForAll(user, approvedContract.address), true);
-  });
 })
 
