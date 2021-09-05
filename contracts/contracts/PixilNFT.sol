@@ -38,7 +38,7 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
     }
 
     function mintTo(address _to) public payable {
-        require(msg.value > cost, 'Not enough ETH sent; check price!');
+        require(msg.value >= cost, 'Not enough ETH sent; check price!');
         uint256 newTokenId = _getNextTokenId();
         _mint(_to, newTokenId);
         _incrementTokenId();
