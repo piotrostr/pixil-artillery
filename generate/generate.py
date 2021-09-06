@@ -1,9 +1,17 @@
 import random 
+import pickle
 
 from glob import glob
 from nft import NFT
 from itertools import combinations
 from rarity import rarity
+
+
+def make_attr(trait_type, value):
+    return {
+        "trait_type": trait_type,
+        "value": value
+    }
 
 
 def generate_boxes(rarity):
@@ -27,6 +35,8 @@ def generate_boxes(rarity):
 
 
 def main_loop():
+    base_url = 'https://pixil-artillery.s3.us-east-2.amazonaws.com/'
+    metadata = {}
     boxes = generate_boxes(rarity)
     _zip = zip(*boxes.values())
     idx = 1
@@ -73,12 +83,16 @@ def main_loop():
             att_combinations.append([])
         combination = random.randint(0, len(att_combinations) - 1)
         attachments = att_combinations[combination]
+        
+        # log
         with open('log.txt', 'a') as f:
             s = f'{idx}.png\t{_weapon:<15}{str(_skin):<5}'
             s += f'{str(_pendant):<10}{str(_scope):<10}'
             s += f'{_background:<10}'
             s += '\n'
             f.write(s)
+
+        # create and save
         NFT(
             weapon=weapon,
             skin=skin,
@@ -87,14 +101,27 @@ def main_loop():
             scope=scope,
             background=background
         )(idx)
+
+        # save metadata
+        image = base_url + str(idx) + '.png'
+        attributes = [
+            make_attr('Weapon', weapon),
+            make_attr('Skin', skin),
+            make_attr('Keychain', pendant),
+            make_attr('Scope', scope),
+            make_attr('Background', background),
+        ]
+        metadata[idx] = {
+            "image": image,
+            "attributes": attributes
+        }
+
         idx += 1
+
+    with open('metadata.pkl', 'wb') as f:
+        pickle.dump(metadata, f)
 
 
 if __name__ == '__main__':
     main_loop()
-
-
-# upper left px shortage - ak47, db, revolver
-# swap suppressors etc
-# make the contract and the web3 on the website
 
