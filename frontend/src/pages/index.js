@@ -14,11 +14,11 @@ export default function Home() {
         <meta name="description" content="content" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <div style={{ marginBottom: 50 }}>
+      <div style={{ marginBottom: 50 }}>
         <Image 
           src={'/logo.jpeg'}
-          width={483}
-          height={443}
+          width={273}
+          height={223}
         />
       </div>
       {
@@ -29,3 +29,4 @@ export default function Home() {
     </Page>
   )
 }
+
