@@ -66,6 +66,9 @@ export default function Mint() {
         </div>
       }
     </Container>
+    // TODO show the minted piece on the page
+    // pretty much could embed the opensea bit, easier and better looks
+    // deploy the api
   )
 }
 

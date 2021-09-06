@@ -1,0 +1,3 @@
+[submodule "artillery-api"]
+	path = artillery-api
+	url = https://git.heroku.com/artillery-api.git
