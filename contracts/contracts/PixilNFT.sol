@@ -27,6 +27,7 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
     uint public totalSupply = 5000;
     uint public currentTokenId = 0;
     uint public cost = 30000000000000000;
+    uint public decimals = uint8(0);
     
     constructor(
         string memory _name, 
