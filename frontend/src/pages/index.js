@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Head from 'next/head'
 import styled from 'styled-components'
 import ConnectWallet from 'components/ConnectWallet'
+import Mint from 'components/Mint'
+import { useWeb3React } from '@web3-react/core'
 
 const Page = styled.div`
   height: 100vh;
@@ -22,6 +24,7 @@ const Footer = styled.footer`
 `
 
 export default function Home() {
+  const { account, active, activate, library } = useWeb3React()
   return (
     <Page>
       <Head>
@@ -29,7 +32,11 @@ export default function Home() {
         <meta name="description" content="content" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ConnectWallet />
+      {
+        !active 
+          ? <ConnectWallet />
+          : <Mint />
+      }
       <Footer>
           Powered by{' '}
           <span>

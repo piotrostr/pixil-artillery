@@ -72,6 +72,8 @@ contract('PixilNFT', function ([owner, ...accounts]) {
   })
 
   it('should be able to trade on opensea', async function() {
+    // there isnt really a test for that I think for now 
+    // todo have a look at deployed rinkeby.opensea.io contract
   })
 
 })

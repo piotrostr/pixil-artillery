@@ -1,0 +1,24 @@
+import styled from 'styled-components'
+
+export const Container = styled.div`
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+`
+
+export const Button = styled.div`
+  width: 100px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  user-select: none;
+`
