@@ -22,3 +22,21 @@ export const Button = styled.div`
   margin-bottom: 20px;
   user-select: none;
 `
+
+export const Page = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+
+export const Footer = styled.footer`
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+`
