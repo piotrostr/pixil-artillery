@@ -1,6 +1,11 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 
-const { mnemonic, BSCSCANAPIKEY, infura } = require('./.env.json');
+const { 
+  mnemonic, 
+  BSCSCANAPIKEY, 
+  infura,
+  ETHERSCANAPIKEY 
+} = require('./.env.json');
 
 
 module.exports = {
@@ -8,7 +13,8 @@ module.exports = {
     'truffle-plugin-verify'
   ],
   api_keys: {
-    bscscan: BSCSCANAPIKEY
+    bscscan: BSCSCANAPIKEY,
+    etherscan: ETHERSCANAPIKEY
   },
   networks: {
     bscTestnet: {
@@ -21,7 +27,7 @@ module.exports = {
     development: {
         host: "localhost",
         port: 8545,
-        network_id: 1630932126043,
+        network_id: 1630932850029,
     },
     ropsten: {
         provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infura}`),
