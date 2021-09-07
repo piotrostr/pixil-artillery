@@ -16,8 +16,8 @@ export default function Marketplace() {
 	src='https://testnets.opensea.io/collection/pixilartillery?embed=true'
 	width='100%'
 	height='100%'
-	frameborder='0'
-	allowfullscreen
+	frameBorder='0'
+	allowFullScreen
        />
     </Page>
   )

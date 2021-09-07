@@ -2,14 +2,27 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styled from 'styled-components'
 
+const SpacyRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  & > div {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  & > a {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+`
+
 const HeaderContainer = styled.div`
-  width: 100%;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
   height: 100px;
   font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.5em;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   a {
     text-decoration: none;
@@ -20,25 +33,57 @@ const HeaderContainer = styled.div`
 export default function Header() {
   return (
     <HeaderContainer>
-      <Link href={'/'}>
-        <a>
+        <a href={'#'}>
           <Image 
-            src={'/logo.jpeg'}
-            width={143}
+            src={'/header-logo.svg'}
+            width={327}
             height={103}
           />
         </a>
-      </Link>
-      <Link href={'/marketplace'}>
-        <a>
-          Marketplace
-        </a>
-      </Link>
-      <Link href={'/mint'}>
-        <a>
-          Mint
-        </a>
-      </Link>
+        <SpacyRow>
+          <a href={'#about'}>
+            About
+          </a>
+          <a href={'#rarity'}>
+            Rarity
+          </a>
+            <a href={'#faq'}>
+              FAQ
+            </a>
+            <a href={'#roadmap'}>
+              Roadmap
+            </a>
+        </SpacyRow>
+        <SpacyRow>
+          <div>
+            <Image 
+              src={'/twitter.svg'}
+              width={35}
+              height={35}
+            />
+          </div>
+          <div>
+            <Image 
+              src={'/insta.svg'}
+              width={35}
+              height={35}
+            />
+          </div>
+          <div>
+            <Image 
+              src={'/discord.svg'}
+              width={35}
+              height={35}
+            />
+          </div>
+          <div>
+            <Image 
+              src={'/tiktok.svg'}
+              width={35}
+              height={35}
+            />
+          </div>
+        </SpacyRow>
     </HeaderContainer>
   )
 }
