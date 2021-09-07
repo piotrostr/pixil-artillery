@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useWeb3React, UnsupportedChainIdError } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { Container, Button } from 'components/styled'
-import { NFT_ABI, NFT_ADDRESS } from 'contract'
+import { NFT_ABI, NFT_ADDRESS_ROPSTEN, NFT_ADDRESS_RINKEBY } from 'contract'
 
 const injected = new InjectedConnector()  // TODO for main thing it can only be eth
 
@@ -18,7 +18,7 @@ export default function Mint() {
     setBalance(library.utils.fromWei(balance))
     const instance = new library.eth.Contract(
       NFT_ABI, 
-      NFT_ADDRESS
+      NFT_ADDRESS_RINKEBY
     )
     const totalSupply = await instance.methods.totalSupply().call()
     const currentTokenId = await instance.methods.currentTokenId().call()
@@ -30,7 +30,7 @@ export default function Mint() {
       setWaiting(true)
       const instance = new library.eth.Contract(
         NFT_ABI, 
-        NFT_ADDRESS
+        NFT_ADDRESS_RINKEBY
       )
       const ethAmount = library.utils.toWei('0.03', 'ether')
       const result = await instance.methods
@@ -69,7 +69,6 @@ export default function Mint() {
     // TODO's
     // show the minted piece on the page
     // pretty much could embed the opensea bit, easier and better looks
-    // add the image hash
   )
 }
 

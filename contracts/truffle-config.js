@@ -27,7 +27,7 @@ module.exports = {
     development: {
         host: "localhost",
         port: 8545,
-        network_id: 1630932850029,
+        network_id: 1337,
     },
     ropsten: {
         provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infura}`),
@@ -37,7 +37,16 @@ module.exports = {
         confirmations: 2,
         production: true,
         skipDryRun: true
-    }
+    },
+    rinkeby: {
+        provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infura}`),
+        network_id: 4,
+        confirmations: 2,
+        production: true,
+        skipDryRun: true,
+        gas: 4500000,
+        gasPrice: 10000000000,
+    },
   },
   mocha: {
     timeout: 100000
