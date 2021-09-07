@@ -1,9 +1,12 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
+import ConnectWallet from 'components/ConnectWallet'
+import Mint from 'components/Mint'
+import { useWeb3React } from '@web3-react/core'
 import { Page, Footer } from 'components/styled'
 
-export default function Home() {
+export default function MintNFT() {
+  const { account, active, activate, library } = useWeb3React()
   return (
     <Page>
       <Head>
@@ -18,16 +21,11 @@ export default function Home() {
           height={223}
         />
       </div>
-      <Link href={'/marketplace'}>
-        <a>
-          Marketplace
-        </a>
-      </Link>
-      <Link href={'/mint'}>
-        <a>
-          Mint
-        </a>
-      </Link>
+      {
+        !active 
+          ? <ConnectWallet />
+          : <Mint />
+      }
     </Page>
   )
 }
