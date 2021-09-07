@@ -18,7 +18,6 @@ export default function YouMinted({ id }) {
       NFT_ADDRESS_RINKEBY
     )
     const baseURI = await instance.methods.baseTokenURI().call()
-    console.log(baseURI)
     const response = await fetch(baseURI + id)
     const metadata = await response.json()
     setMetadata(metadata)
@@ -27,7 +26,7 @@ export default function YouMinted({ id }) {
     <div>
       {
         metadata &&
-        <div>
+        <div style={{ marginTop: 15 }}>
           <Image 
             src={metadata.image}
             width={100}

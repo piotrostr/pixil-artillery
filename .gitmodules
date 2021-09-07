@@ -1,3 +1,6 @@
 [submodule "artillery-api"]
 	path = artillery-api
 	url = https://git.heroku.com/artillery-api.git
+[submodule "metadata-api-ryan"]
+	path = metadata-api-ryan
+	url = https://github.com/piotrostr/metadata-api-ryan
