@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useWeb3React, UnsupportedChainIdError } from '@web3-react/core'
-import { InjectedConnector } from '@web3-react/injected-connector'
 import { Container, Button } from 'components/styled'
 import { NFT_ABI, NFT_ADDRESS_ROPSTEN, NFT_ADDRESS_RINKEBY } from 'contract'
 
-const injected = new InjectedConnector()  // TODO for main thing it can only be eth
-
-export default function Mint() {
-  const { account, active, activate, library } = useWeb3React()
+export default function Mint({ minted, setMinted }) {
+  const { account, active, library } = useWeb3React()
   const [balance, setBalance] = useState(null)
   const [remainingNfts, setRemainingNfts] = useState(null)
   const [waiting, setWaiting] = useState(false)
@@ -27,6 +24,7 @@ export default function Mint() {
 
   async function mint() {
     try {
+      setMinted(null)
       setWaiting(true)
       const instance = new library.eth.Contract(
         NFT_ABI, 
@@ -38,6 +36,8 @@ export default function Mint() {
         .send({ from: account, value: ethAmount })
       setWaiting(false)
       alert('Minted! Transaction hash: ' + result.transactionHash)
+      const currentTokenId = await instance.methods.currentTokenId().call()
+      setMinted(currentTokenId)
     } catch {
       setWaiting(false)
       alert('Signing the transaction has failed.')

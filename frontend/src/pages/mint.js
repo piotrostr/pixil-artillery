@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import ConnectWallet from 'components/ConnectWallet'
@@ -5,9 +6,11 @@ import Mint from 'components/Mint'
 import { useWeb3React } from '@web3-react/core'
 import { Page, Footer } from 'components/styled'
 import Header from 'components/Header'
+import YouMinted from 'components/YouMinted'
 
 export default function MintNFT() {
   const { account, active, activate, library } = useWeb3React()
+  const [minted, setMinted] = useState(null)
   return (
     <Page>
       <Head>
@@ -26,7 +29,11 @@ export default function MintNFT() {
       {
         !active 
           ? <ConnectWallet />
-          : <Mint />
+          : <Mint minted={minted} setMinted={setMinted} />
+      }
+      {
+        minted &&
+        <YouMinted id={minted} />
       }
     </Page>
   )
