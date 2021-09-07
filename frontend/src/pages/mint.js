@@ -4,6 +4,7 @@ import ConnectWallet from 'components/ConnectWallet'
 import Mint from 'components/Mint'
 import { useWeb3React } from '@web3-react/core'
 import { Page, Footer } from 'components/styled'
+import Header from 'components/Header'
 
 export default function MintNFT() {
   const { account, active, activate, library } = useWeb3React()
@@ -14,6 +15,7 @@ export default function MintNFT() {
         <meta name="description" content="content" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <div style={{ marginBottom: 50 }}>
         <Image 
           src={'/logo.jpeg'}

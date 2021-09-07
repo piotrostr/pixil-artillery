@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Mint from 'components/Mint'
 import { Page, Footer } from 'components/styled'
+import Header from 'components/Header'
 
 export default function Marketplace() {
   return (
@@ -10,6 +11,7 @@ export default function Marketplace() {
         <meta name="description" content="content" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <iframe 
 	src='https://testnets.opensea.io/collection/pixilartillery?embed=true'
 	width='100%'
