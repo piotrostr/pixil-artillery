@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: Nunito Sans;
+    scroll-behavior: smooth;
     background: rgb(202, 170, 217);
   }
   a {

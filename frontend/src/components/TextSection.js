@@ -28,12 +28,13 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 100px;
   align-items: flex-start;
   b {
     font-weight: 800;
     color: rgb(206, 244, 255);
   }
+  padding-top: 80px;
+  margin-bottom: 150px;
 `
 
 const Column = styled.div`
@@ -44,7 +45,7 @@ const Column = styled.div`
 
 const Arrow = styled.div`
   position: absolute;
-  top: 18%;
+  top: 28%;
   left: 45%;
   color: rgb(206, 244, 255);
   font-size: 90px;
@@ -53,7 +54,7 @@ const Arrow = styled.div`
 
 export default function TextSection() {
   return (
-    <Container>
+    <Container id="about">
       <Column>
         <Heading>What is Pixil-Artillery?</Heading>
         <Paragraph>

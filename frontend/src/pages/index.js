@@ -5,6 +5,7 @@ import { Page, Footer } from 'components/styled'
 import HomeView from 'components/HomeView'
 import SampleWeaponsVault from 'components/SampleWeaponsVault'
 import TextSection from 'components/TextSection'
+import Rarity from 'components/Rarity'
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <HomeView />
       <SampleWeaponsVault />
       <TextSection />
+      <Rarity />
     </Page>
   )
 }
