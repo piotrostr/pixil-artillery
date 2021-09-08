@@ -20,11 +20,6 @@ export default function MintNFT() {
       </Head>
       <Header />
       <div style={{ marginBottom: 50 }}>
-        <Image 
-          src={'/logo.jpeg'}
-          width={273}
-          height={223}
-        />
       </div>
       {
         !active 

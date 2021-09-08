@@ -22,7 +22,9 @@ export default function Home() {
       <TextSection />
       <Rarity />
       <Faq />
-      <div />
+      <div style={{ marginTop: 30, paddingBottom: 30 }}>
+        developed by: <b><a href={'https://github.com/piotrostr'}>@piotrostr</a></b>
+      </div>
     </Page>
   )
 }

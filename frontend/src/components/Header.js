@@ -74,28 +74,28 @@ export default function Header() {
         </SpacyRow>
       </Navigation>
       <LessSpacyRow style={{ marginTop: 10 }}>
-        <a href={'https://twitter.com/'}>
+        <a href={'https://twitter.com/pixil_artillery'}>
           <Image 
             src={'/twitter.png'}
             width={50}
             height={27}
           />
         </a>
-        <a href={'https://instagram.com/'}>
+        <a href={'https://instagram.com/pixilartillery'}>
           <Image 
             src={'/instagram.png'}
             width={30}
             height={30}
           />
         </a>
-        <a href={'https://discord.com'}>
+        <a href={'https://discord.com/WayqMgya'}>
           <Image 
             src={'/discord.png'}
             width={50}
             height={28}
           />
         </a>
-        <a href={'https://tiktok.com'}>
+        <a href={'https://vm.tiktok.com/ZMRP75exJ'}>
           <Image 
             src={'/tiktok.png'}
             width={45}

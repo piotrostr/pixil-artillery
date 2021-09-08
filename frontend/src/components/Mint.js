@@ -10,16 +10,18 @@ export default function Mint({ minted, setMinted }) {
   const [waiting, setWaiting] = useState(false)
   const address = account.slice(0, 4) + '...' + account.slice(account.length - 4)
 
-  useEffect(async function() {
-    const balance = await library.eth.getBalance(account)
-    setBalance(library.utils.fromWei(balance))
-    const instance = new library.eth.Contract(
-      NFT_ABI, 
-      NFT_ADDRESS_RINKEBY
-    )
-    const totalSupply = await instance.methods.totalSupply().call()
-    const currentTokenId = await instance.methods.currentTokenId().call()
-    setRemainingNfts(totalSupply - currentTokenId)
+  useEffect(function() {
+    (async function() {
+      const balance = await library.eth.getBalance(account)
+      setBalance(library.utils.fromWei(balance))
+      const instance = new library.eth.Contract(
+        NFT_ABI, 
+        NFT_ADDRESS_RINKEBY
+      )
+      const totalSupply = await instance.methods.totalSupply().call()
+      const currentTokenId = await instance.methods.currentTokenId().call()
+      setRemainingNfts(totalSupply - currentTokenId)
+    })()
   }, [waiting])
 
   async function mint() {
@@ -66,9 +68,6 @@ export default function Mint({ minted, setMinted }) {
         </div>
       }
     </Container>
-    // TODO's
-    // show the minted piece on the page
-    // pretty much could embed the opensea bit, easier and better looks
   )
 }
 
