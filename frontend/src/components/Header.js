@@ -5,15 +5,18 @@ import styled from 'styled-components'
 const SpacyRow = styled.div`
   display: flex;
   flex-direction: row;
-  & > div {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
   & > a {
     margin-left: 20px;
     margin-right: 20px;
   }
   align-items: center;
+`
+
+const LessSpacyRow = styled(SpacyRow)`
+  & > a {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 `
 
 const HeaderContainer = styled.div`
@@ -70,36 +73,36 @@ export default function Header() {
             </a>
         </SpacyRow>
       </Navigation>
-      <SpacyRow style={{ marginTop: 10 }}>
-        <div>
+      <LessSpacyRow style={{ marginTop: 10 }}>
+        <a href={'https://twitter.com/'}>
           <Image 
-            src={'/twitter.svg'}
-            width={35}
-            height={35}
+            src={'/twitter.png'}
+            width={50}
+            height={27}
           />
-        </div>
-        <div>
+        </a>
+        <a href={'https://instagram.com/'}>
           <Image 
-            src={'/insta.svg'}
-            width={25}
-            height={25}
+            src={'/instagram.png'}
+            width={30}
+            height={30}
           />
-        </div>
-        <div>
+        </a>
+        <a href={'https://discord.com'}>
           <Image 
-            src={'/discord.svg'}
-            width={35}
-            height={35}
+            src={'/discord.png'}
+            width={50}
+            height={28}
           />
-        </div>
-        <div>
+        </a>
+        <a href={'https://tiktok.com'}>
           <Image 
-            src={'/tiktok.svg'}
-            width={35}
-            height={35}
+            src={'/tiktok.png'}
+            width={45}
+            height={45}
           />
-        </div>
-      </SpacyRow>
+        </a>
+      </LessSpacyRow>
     </HeaderContainer>
   )
 }
