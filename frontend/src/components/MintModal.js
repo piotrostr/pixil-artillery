@@ -128,12 +128,12 @@ function Mint({ setMinted }) {
         NFT_ADDRESS_RINKEBY
       )
       const ethAmount = library.utils.toWei('0.03', 'ether')
+      const currentTokenId = await instance.methods.currentTokenId().call()
       const result = await instance.methods
         .mintTo(account)
         .send({ from: account, value: ethAmount })
       setWaiting(false)
       alert('Minted! Transaction hash: ' + result.transactionHash)
-      const currentTokenId = await instance.methods.currentTokenId().call()
       setMinted(currentTokenId)
     } catch {
       setWaiting(false)
