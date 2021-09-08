@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import Image from 'next/image'
+import MintButton from 'components/MintButton'
 
 const Row = styled.div`
   display: flex;
@@ -13,23 +14,6 @@ const Container = styled(Row)`
   margin-left: auto;
   justify-content: space-around;
   margin-top: 30px;
-`
-
-const MintButton = styled.div`
-  width: 143px;
-  height: 47px;
-  background: #19845D;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 24px;
-  font-family: Nunito Sans;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 16px;
-  line-height: 22px;
-  color: #000000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
 const MarketplaceButton = styled.div`
@@ -91,11 +75,7 @@ export default function HomeView() {
         <SubText>Welcome to</SubText>
         <MainText>Pixil-Artillery</MainText>
         <Row style={{ marginTop: 25 }}>
-          <Link href={'/mint'}>
-            <a>
-              <MintButton>Mint</MintButton>
-            </a>
-          </Link>
+          <MintButton />
           <Link href={'/marketplace'}>
             <a>
               <MarketplaceButton>Marketplace</MarketplaceButton>

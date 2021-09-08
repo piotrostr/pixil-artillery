@@ -2,8 +2,28 @@ import { useEffect, useState } from 'react'
 import { useWeb3React, UnsupportedChainIdError } from '@web3-react/core'
 import { Container, Button } from 'components/styled'
 import { NFT_ABI, NFT_ADDRESS_ROPSTEN, NFT_ADDRESS_RINKEBY } from 'contract'
+import ConnectWallet from 'components/ConnectWallet'
+import Modal from 'react-modal'
 
-export default function Mint({ minted, setMinted }) {
+export default function MintModal({ isOpen, setOpen }) {
+  const { active } = useWeb3React()
+  const [minted, setMinted] = useState(null)
+  return (
+    <Modal isOpen={isOpen} onRequestClose={() => setOpen(false)}>
+      {
+        !active 
+          ? <ConnectWallet />
+          : (
+            !minted
+              ? <Mint setMinted={setMinted} />
+              : <YouMinted id={minted} />
+          )
+      }
+    </Modal>
+  )
+}
+
+function Mint({ setMinted }) {
   const { account, active, library } = useWeb3React()
   const [balance, setBalance] = useState(null)
   const [remainingNfts, setRemainingNfts] = useState(null)
@@ -46,12 +66,15 @@ export default function Mint({ minted, setMinted }) {
     }
   }
   return (
-    <Container>
-        <Button onClick={active ? () => mint() : () => null} disabled={!active && !waiting}>
-          <a>
-            { !waiting ? 'Mint' : 'Minting...' }
-          </a>
-        </Button>
+    <div>
+      <Button 
+        onClick={active ? () => mint() : () => null} 
+        disabled={!active && !waiting}
+      >
+        <a>
+          { !waiting ? 'Mint' : 'Minting...' }
+        </a>
+      </Button>
       {
         balance && 
         <div>
@@ -67,7 +90,6 @@ export default function Mint({ minted, setMinted }) {
           }
         </div>
       }
-    </Container>
+    </div>
   )
 }
-
