@@ -4,6 +4,7 @@ import Header from 'components/Header'
 import { Page, Footer } from 'components/styled'
 import HomeView from 'components/HomeView'
 import SampleWeaponsVault from 'components/SampleWeaponsVault'
+import TextSection from 'components/TextSection'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <HomeView />
       <SampleWeaponsVault />
+      <TextSection />
     </Page>
   )
 }

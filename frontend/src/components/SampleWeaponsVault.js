@@ -27,6 +27,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 100px;
 `
 
 const Row = styled.div`

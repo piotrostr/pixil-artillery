@@ -44,59 +44,61 @@ const Navigation = styled.div`
 export default function Header() {
   return (
     <HeaderContainer>
-        <a href={'#'} style={{ marginTop: 15 }}>
+      <Link href={'/'}>
+        <a style={{ marginTop: 15 }}>
           <Image 
             src={'/header-logo.png'}
             width={300}
             height={65.5}
           />
         </a>
-        <Navigation>
-          <SpacyRow>
-            <a href={'#about'}>
-              About
+      </Link>
+      <Navigation>
+        <SpacyRow>
+          <a href={'#about'}>
+            About
+          </a>
+          <a href={'#rarity'}>
+            Rarity
+          </a>
+            <a href={'#faq'}>
+              FAQ
             </a>
-            <a href={'#rarity'}>
-              Rarity
+            <a href={'#roadmap'}>
+              Roadmap
             </a>
-              <a href={'#faq'}>
-                FAQ
-              </a>
-              <a href={'#roadmap'}>
-                Roadmap
-              </a>
-          </SpacyRow>
-        </Navigation>
-        <SpacyRow style={{ marginTop: 10 }}>
-          <div>
-            <Image 
-              src={'/twitter.svg'}
-              width={35}
-              height={35}
-            />
-          </div>
-          <div>
-            <Image 
-              src={'/insta.svg'}
-              width={25}
-              height={25}
-            />
-          </div>
-          <div>
-            <Image 
-              src={'/discord.svg'}
-              width={35}
-              height={35}
-            />
-          </div>
-          <div>
-            <Image 
-              src={'/tiktok.svg'}
-              width={35}
-              height={35}
-            />
-          </div>
         </SpacyRow>
+      </Navigation>
+      <SpacyRow style={{ marginTop: 10 }}>
+        <div>
+          <Image 
+            src={'/twitter.svg'}
+            width={35}
+            height={35}
+          />
+        </div>
+        <div>
+          <Image 
+            src={'/insta.svg'}
+            width={25}
+            height={25}
+          />
+        </div>
+        <div>
+          <Image 
+            src={'/discord.svg'}
+            width={35}
+            height={35}
+          />
+        </div>
+        <div>
+          <Image 
+            src={'/tiktok.svg'}
+            width={35}
+            height={35}
+          />
+        </div>
+      </SpacyRow>
     </HeaderContainer>
   )
 }
