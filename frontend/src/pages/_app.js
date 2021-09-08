@@ -39,12 +39,14 @@ function getLibrary(provider) {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Web3ReactProvider getLibrary={getLibrary}>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </Web3ReactProvider>
+    <>
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Web3ReactProvider>
+    </>
   )
 }
 
