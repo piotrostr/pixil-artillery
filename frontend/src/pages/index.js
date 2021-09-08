@@ -1,9 +1,9 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
 import Header from 'components/Header'
 import { Page, Footer } from 'components/styled'
 import HomeView from 'components/HomeView'
+import SampleWeaponsVault from 'components/SampleWeaponsVault'
 
 export default function Home() {
   return (
@@ -15,6 +15,7 @@ export default function Home() {
       </Head>
       <Header />
       <HomeView />
+      <SampleWeaponsVault />
     </Page>
   )
 }

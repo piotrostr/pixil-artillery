@@ -7,6 +7,14 @@ const Row = styled.div`
   flex-direction: row;
 `
 
+const Container = styled(Row)`
+  max-width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: space-around;
+  margin-top: 30px;
+`
+
 const MintButton = styled.div`
   width: 143px;
   height: 47px;
@@ -78,7 +86,7 @@ const LogoContainer = styled.div`
 
 export default function HomeView() {
   return (
-    <Row style={{ alignItems: 'center' }}>
+    <Container style={{ alignItems: 'center' }}>
       <div>
         <SubText>Welcome to</SubText>
         <MainText>Pixil-Artillery</MainText>
@@ -95,13 +103,15 @@ export default function HomeView() {
           </Link>
         </Row>
       </div>
-      <Image 
-        src={'/main-logo.svg'}
-        width={530}
-        height={584}
-        alt={'main-logo'}
-      />
-    </Row>
+      <div style={{ marginLeft: 80 }}>
+        <Image 
+          src={'/main-logo.png'}
+          width={435}
+          height={377}
+          alt={'main-logo'}
+        />
+      </div>
+    </Container>
   )
 }
 

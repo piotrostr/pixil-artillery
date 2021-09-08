@@ -13,6 +13,7 @@ const SpacyRow = styled.div`
     margin-left: 20px;
     margin-right: 20px;
   }
+  align-items: center;
 `
 
 const HeaderContainer = styled.div`
@@ -28,33 +29,45 @@ const HeaderContainer = styled.div`
     text-decoration: none;
   }
   margin-bottom: 10px;
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+`
+
+const Navigation = styled.div`
+  @media screen and (max-width: 1100px) {
+    display: none;
+  }
 `
 
 export default function Header() {
   return (
     <HeaderContainer>
-        <a href={'#'}>
+        <a href={'#'} style={{ marginTop: 15 }}>
           <Image 
-            src={'/header-logo.svg'}
-            width={327}
-            height={103}
+            src={'/header-logo.png'}
+            width={300}
+            height={65.5}
           />
         </a>
-        <SpacyRow>
-          <a href={'#about'}>
-            About
-          </a>
-          <a href={'#rarity'}>
-            Rarity
-          </a>
-            <a href={'#faq'}>
-              FAQ
+        <Navigation>
+          <SpacyRow>
+            <a href={'#about'}>
+              About
             </a>
-            <a href={'#roadmap'}>
-              Roadmap
+            <a href={'#rarity'}>
+              Rarity
             </a>
-        </SpacyRow>
-        <SpacyRow>
+              <a href={'#faq'}>
+                FAQ
+              </a>
+              <a href={'#roadmap'}>
+                Roadmap
+              </a>
+          </SpacyRow>
+        </Navigation>
+        <SpacyRow style={{ marginTop: 10 }}>
           <div>
             <Image 
               src={'/twitter.svg'}
@@ -65,8 +78,8 @@ export default function Header() {
           <div>
             <Image 
               src={'/insta.svg'}
-              width={35}
-              height={35}
+              width={25}
+              height={25}
             />
           </div>
           <div>
