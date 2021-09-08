@@ -6,6 +6,7 @@ import HomeView from 'components/HomeView'
 import SampleWeaponsVault from 'components/SampleWeaponsVault'
 import TextSection from 'components/TextSection'
 import Rarity from 'components/Rarity'
+import Faq from 'components/Faq'
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <SampleWeaponsVault />
       <TextSection />
       <Rarity />
+      <Faq />
     </Page>
   )
 }

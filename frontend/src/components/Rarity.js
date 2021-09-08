@@ -3,9 +3,8 @@ import styled from 'styled-components'
 
 const Heading = styled.div`
   font-family: Nunito Sans;
-  font-style: italic;
   font-weight: 900;
-  font-size: 50px;
+  font-size: 37px;
   line-height: 32px;
   color: #000000;
   position: absolute;
@@ -24,6 +23,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   padding-top: 70px;
+  margin-bottom: 150px;
 `
 
 const Column = styled.div`
@@ -39,7 +39,7 @@ const Row = styled.div`
 
 export default function Rarity() {
   return (
-    <Container>
+    <Container id="rarity">
       <Heading>
         Rarity:
       </Heading>

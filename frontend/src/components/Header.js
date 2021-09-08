@@ -18,6 +18,7 @@ const SpacyRow = styled.div`
 
 const HeaderContainer = styled.div`
   width: 70%;
+  max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
   height: 100px;
