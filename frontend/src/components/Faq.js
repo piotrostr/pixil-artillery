@@ -30,8 +30,7 @@ const faq = [
     text: `We are not here to advise you on investing, but what we can do is
       assure you that we have many things planned for the future for this
       project. We will not simply abandon the project post mint as many NFT
-      projects do. We are dedicated to making Pixil-Artillery the best it can be,
-      all we ask is for patience. We won’t get a 1 ETH floor overnight.`
+      projects do.`
   },
 ]
 
@@ -78,7 +77,7 @@ const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px 5px 5px 10px;
+  padding: 15px 5px 15px 5px;
 `
 
 const Container = styled.div`
@@ -108,7 +107,7 @@ function Box({ title, text }) {
 
 export default function Faq() {
   return (
-    <Container>
+    <Container id="faq">
       <Heading>
         Frequently Asked Questions
       </Heading>

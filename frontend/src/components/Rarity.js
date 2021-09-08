@@ -8,7 +8,7 @@ const Heading = styled.div`
   line-height: 32px;
   color: #000000;
   position: absolute;
-  top: 0;
+  top: 30px;
   left: 0;
 `
 
@@ -22,7 +22,7 @@ const Container = styled.div`
   align-items: center;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding-top: 70px;
+  padding-top: 100px;
   margin-bottom: 150px;
 `
 

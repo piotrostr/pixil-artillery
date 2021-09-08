@@ -22,6 +22,7 @@ export default function Home() {
       <TextSection />
       <Rarity />
       <Faq />
+      <div />
     </Page>
   )
 }

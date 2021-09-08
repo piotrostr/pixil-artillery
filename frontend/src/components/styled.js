@@ -29,6 +29,7 @@ export const Page = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 50px;
 `
 
 export const Footer = styled.footer`
