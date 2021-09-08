@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { NFT_ABI, NFT_ADDRESS_ROPSTEN, NFT_ADDRESS_RINKEBY } from 'contract'
 import { useWeb3React } from '@web3-react/core'
 import Image from 'next/image'
+import { Info } from 'components/MintModal'
 
 export default function YouMinted({ id }) {
   const { library, active } = useWeb3React()
@@ -23,23 +24,26 @@ export default function YouMinted({ id }) {
     setMetadata(metadata)
   }
   return (
-    <div>
+    <>
       {
-        metadata &&
-        <div style={{ marginTop: 15 }}>
+        metadata && 
+        <>
+          <Info style={{ fontSize: 30 }}><b>#{id}</b></Info>
           <Image 
             src={metadata.image}
-            width={100}
-            height={100}
+            width={150}
+            height={150}
             alt={'nft'}
           />
+          <div>
             {
               metadata.attributes.map((attribute, key) =>
-                <div key={key}>{attribute.trait_type}: {attribute.value}</div>
+                <Info key={key}><b>{attribute.trait_type}: </b> {attribute.value ?? 'None'}</Info>
               )
             }
-        </div>
+          </div>
+        </>
       }
-    </div>
+    </>
   )
 }

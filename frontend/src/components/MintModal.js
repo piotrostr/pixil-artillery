@@ -4,6 +4,7 @@ import { NFT_ABI, NFT_ADDRESS_ROPSTEN, NFT_ADDRESS_RINKEBY } from 'contract'
 import ConnectWallet from 'components/ConnectWallet'
 import Modal from 'react-modal'
 import styled from 'styled-components'
+import YouMinted from 'components/YouMinted'
 
 const style = {
   content: {
@@ -36,17 +37,16 @@ const NumberLeft = styled.div`
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
-const Info = styled.div`
+export const Info = styled.div`
   font-family: Orbitron;
   font-style: normal;
   font-size: 20px;
   line-height: 32px;
   color: #000000;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
 const Button = styled.div`
-  width: 204px;
+  width: 234px;
   height: 76px;
   background: #CFF4FF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -70,10 +70,14 @@ const Button = styled.div`
 export default function MintModal({ isOpen, setOpen }) {
   const { active } = useWeb3React()
   const [minted, setMinted] = useState(null)
+  function close() {
+    setOpen(false)
+    setMinted(null)
+  }
   return (
     <Modal 
       isOpen={isOpen} 
-      onRequestClose={() => setOpen(false)} 
+      onRequestClose={close} 
       style={style}
     >
       {
