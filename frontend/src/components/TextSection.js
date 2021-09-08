@@ -34,7 +34,7 @@ const Container = styled.div`
     color: rgb(206, 244, 255);
   }
   padding-top: 80px;
-  margin-bottom: 150px;
+  margin-bottom: 60px;
 `
 
 const Column = styled.div`
