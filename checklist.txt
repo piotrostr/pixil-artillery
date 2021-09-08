@@ -1,0 +1,9 @@
+add unsupported chain error
+finish modal
+add favicon
+add domain
+move suppressors and generate final batch
+get batch on aws
+update metadata api
+add mobile scaling
+add image backgroudn

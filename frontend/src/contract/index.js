@@ -56,6 +56,25 @@ export const NFT_ABI = [
     "type": "function",
     "constant": true
   },
+  {
+    "inputs": [
+      {
+	"internalType":"address",
+	"name":"owner",
+	"type":"address"
+      }
+    ],
+    "name":"balanceOf",
+    "outputs": [
+      {
+	"internalType":"uint256",
+	"name":"",
+	"type":"uint256"
+      }
+    ],
+    "stateMutability":"view",
+    "type":"function"
+  },
 ]
 
 export const NFT_ADDRESS_ROPSTEN = '0xFd624C361d3b50D47988F32e7a05b68ba77A0a7c' 

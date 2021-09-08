@@ -19,6 +19,8 @@ const MintButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
+  cursor: pointer;
 `
 
 export default function MintButton() {
@@ -27,7 +29,7 @@ export default function MintButton() {
   return (
     <div>
       <MintButtonContainer onClick={() => setOpen(true)}>
-        Mint
+        Get started
       </MintButtonContainer>
       <MintModal isOpen={isOpen} setOpen={setOpen} />
     </div>
