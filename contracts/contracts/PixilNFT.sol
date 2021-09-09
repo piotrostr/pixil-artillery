@@ -26,7 +26,7 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
     string private _baseTokenUri = 'https://artillery-api.herokuapp.com/';
     uint public totalSupply = 5000;
     uint public currentTokenId = 0;
-    uint public cost = 15000000000000000;
+    uint public cost = 50000000000000000000;
     uint public decimals = uint8(0);
     
     constructor(

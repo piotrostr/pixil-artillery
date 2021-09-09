@@ -24,7 +24,7 @@ contract('PixilNFT', function ([owner, ...accounts]) {
   it('should be able to mint', async function() {
     let tokenId = await instance.currentTokenId()
     tokenId = tokenId.toNumber()
-    const ethAmount = web3.utils.toWei('0.0150', 'ether')
+    const ethAmount = web3.utils.toWei('50', 'ether')
     let tx = await instance.mintTo(accounts[0], { value: ethAmount })
     let tokenIdPostMint = await instance.currentTokenId()
     tokenIdPostMint = tokenIdPostMint.toNumber()
@@ -32,7 +32,7 @@ contract('PixilNFT', function ([owner, ...accounts]) {
   })
 
   it('shouldnt be able to mint for not enough eth', async function() {
-    const ethAmount = web3.utils.toWei('0.014', 'ether')
+    const ethAmount = web3.utils.toWei('49', 'ether')
     await truffleAssert.fails(
       instance.mintTo(accounts[0], { value: ethAmount }),
       truffleAssert.ErrorType.REVERT
@@ -41,7 +41,7 @@ contract('PixilNFT', function ([owner, ...accounts]) {
 
   it('should be able to receive eth for minting', async function() {
     const contractBalance = await web3.eth.getBalance(instance.address)
-    assert.equal(contractBalance, web3.utils.toWei('0.015', 'ether'))
+    assert.equal(contractBalance, web3.utils.toWei('50', 'ether'))
   })
 
   it('should be able to withdraw the eth from minting', async function() {

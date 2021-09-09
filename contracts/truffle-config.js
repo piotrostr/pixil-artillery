@@ -4,7 +4,8 @@ const {
   mnemonic, 
   BSCSCANAPIKEY, 
   infura,
-  ETHERSCANAPIKEY 
+  ETHERSCANAPIKEY,
+  MATICSCANKEY
 } = require('./.env.json');
 
 
@@ -14,9 +15,11 @@ module.exports = {
   ],
   api_keys: {
     bscscan: BSCSCANAPIKEY,
-    etherscan: ETHERSCANAPIKEY
+    etherscan: ETHERSCANAPIKEY,
+    polygonscan: MATICSCANKEY
   },
   networks: {
+
     bscTestnet: {
         provider: () => new HDWalletProvider(mnemonic, `https://data-seed-prebsc-1-s1.binance.org:8545`),
         network_id: 97,
@@ -24,11 +27,13 @@ module.exports = {
         confirmations: 5,
         production: true    // Treats this network as if it was a public net. (default: false)
     },
+
     development: {
         host: "localhost",
         port: 8545,
         network_id: 1337,
     },
+
     ropsten: {
         provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infura}`),
         network_id: 3,
@@ -38,6 +43,7 @@ module.exports = {
         production: true,
         skipDryRun: true
     },
+
     rinkeby: {
         provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infura}`),
         network_id: 4,
@@ -47,6 +53,20 @@ module.exports = {
         gas: 4500000,
         gasPrice: 10000000000,
     },
+
+    mainnet: {
+      provider: () => new HDWalletProvider(mnemonic, `https://mainnet.infura.io/v3/${infura}`),
+      network_id: 1
+    },
+
+    matic: {
+      provider: () => new HDWalletProvider(mnemonic, `https://polygon-rpc.com/`),
+      network_id: 137,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
+
   },
   mocha: {
     timeout: 100000
