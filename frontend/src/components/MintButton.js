@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import YouMinted from 'components/YouMinted'
 import MintModal from 'components/MintModal'
@@ -25,10 +25,29 @@ const MintButtonContainer = styled.div`
 
 export default function MintButton() {
   const { account, active, activate, library } = useWeb3React()
+  const [disabled, setDisabled] = useState(false)
+
+  function updateDisabled() {
+    if (window.innerWidth < 600)
+      setDisabled(true)
+    else
+      setDisabled(false)
+  }
+
+  useEffect(function() {
+    updateDisabled()
+    window.addEventListener('resize', updateDisabled)
+  }, [])
+
+
   const [isOpen, setOpen] = useState(false)
   return (
     <div>
-      <MintButtonContainer onClick={() => setOpen(true)}>
+      <MintButtonContainer onClick={
+        !disabled 
+          ?  () => setOpen(true)
+          :  () => alert('Use desktop to get minting!')
+      }>
         Get started
       </MintButtonContainer>
       <MintModal isOpen={isOpen} setOpen={setOpen} />

@@ -57,8 +57,9 @@ const Row = styled.div`
     flex-wrap: wrap;
     & > * {
       flex: 1 1 100px;
-      margin: 15px;
+      margin: 10px;
     }
+    padding: 15px;
   }
 `
 
