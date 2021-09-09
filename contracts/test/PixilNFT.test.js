@@ -21,7 +21,6 @@ contract('PixilNFT', function ([owner, ...accounts]) {
     approvedContract = await ApprovedSpenderContract.deployed()
   })
 
-
   it('should be able to mint', async function() {
     let tokenId = await instance.currentTokenId()
     tokenId = tokenId.toNumber()
@@ -63,17 +62,12 @@ contract('PixilNFT', function ([owner, ...accounts]) {
 
   it('should retrieve the uri correctly', async function() {
     const uri = await instance.baseTokenURI()
-    assert.equal(uri, 'https://pixil-artillery.s3.us-east-2.amazonaws.com/')
+    assert.equal(uri, 'https://artillery-api.herokuapp.com')
   })
 
   it('should be able to update the uri', async function() {
     await instance.setBaseTokenURI('foo')
     assert.equal(await instance.baseTokenURI(), 'foo')
-  })
-
-  it('should be able to trade on opensea', async function() {
-    // there isnt really a test for that I think for now 
-    // todo have a look at deployed rinkeby.opensea.io contract
   })
 
 })
