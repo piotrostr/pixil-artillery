@@ -14,6 +14,10 @@ const Container = styled(Row)`
   margin-left: auto;
   justify-content: space-around;
   margin-top: 30px;
+  @media screen and (max-width: 750px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 `
 
 const MarketplaceButton = styled.div`
@@ -68,6 +72,12 @@ const LogoContainer = styled.div`
   top: -67px;
 `
 
+const ImageContainer = styled.div`
+  @media screen and (min-width: 750px) {
+    margin-left: 80px;
+  }
+`
+
 export default function HomeView() {
   return (
     <Container style={{ alignItems: 'center' }}>
@@ -83,14 +93,14 @@ export default function HomeView() {
           </Link>
         </Row>
       </div>
-      <div style={{ marginLeft: 80 }}>
+      <ImageContainer>
         <Image 
           src={'/main-logo.png'}
           width={435}
           height={377}
           alt={'main-logo'}
         />
-      </div>
+      </ImageContainer>
     </Container>
   )
 }
