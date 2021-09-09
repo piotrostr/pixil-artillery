@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { NFT_ABI, NFT_ADDRESS_ROPSTEN, NFT_ADDRESS_RINKEBY } from 'contract'
 import { useWeb3React } from '@web3-react/core'
 import Image from 'next/image'
-import { Info } from 'components/MintModal'
+import { Info } from 'components/Mint'
 
 export default function YouMinted({ id }) {
   const { library, active } = useWeb3React()
