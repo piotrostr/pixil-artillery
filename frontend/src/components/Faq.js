@@ -43,7 +43,9 @@ const Heading = styled.div`
   color: #2B2D42;
   position: absolute;
   top: 30px;
-  
+  @media screen and (max-width: 900px) {
+    position: unset;
+  }
 `
 
 const Subheading = styled.div`
@@ -90,6 +92,28 @@ const Container = styled.div`
   padding-top: 100px;
   border-radius: 10px;
   position: relative;
+  @media screen and (max-width: 750px) {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+
+    & > * {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+`
+
+const VerticalImageContainer = styled.div`
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
+`
+
+const HorizontalImageContainer = styled.div`
+  @media screen and (min-width: 750px) {
+    display: none;
+  }
 `
 
 function Box({ title, text }) {
@@ -116,12 +140,22 @@ export default function Faq() {
           <Box key={key} title={entry.title} text={entry.text} />
         )
       }
-      <Image 
-        src={'/weapon-divider.png'} 
-        width={61}
-        height={300}
-        alt={'weapon-divider.png'}
-      />
+      <VerticalImageContainer>
+        <Image 
+          src={'/weapon-divider.png'} 
+          width={61}
+          height={300}
+          alt={'weapon-divider'}
+        />
+      </VerticalImageContainer>
+      <HorizontalImageContainer>
+        <Image 
+          src={'/weapon-divider-horizontal.png'} 
+          width={300}
+          height={61}
+          alt={'weapon-divider-horizontal'}
+        />
+      </HorizontalImageContainer>
       {
         faq.slice(2).map((entry, key) => 
           <Box key={key} title={entry.title} text={entry.text} />
