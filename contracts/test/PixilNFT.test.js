@@ -24,7 +24,7 @@ contract('PixilNFT', function ([owner, ...accounts]) {
   it('should be able to mint', async function() {
     let tokenId = await instance.currentTokenId()
     tokenId = tokenId.toNumber()
-    const ethAmount = web3.utils.toWei('0.03', 'ether')
+    const ethAmount = web3.utils.toWei('0.0150', 'ether')
     let tx = await instance.mintTo(accounts[0], { value: ethAmount })
     let tokenIdPostMint = await instance.currentTokenId()
     tokenIdPostMint = tokenIdPostMint.toNumber()
@@ -32,7 +32,7 @@ contract('PixilNFT', function ([owner, ...accounts]) {
   })
 
   it('shouldnt be able to mint for not enough eth', async function() {
-    const ethAmount = web3.utils.toWei('0.029', 'ether')
+    const ethAmount = web3.utils.toWei('0.014', 'ether')
     await truffleAssert.fails(
       instance.mintTo(accounts[0], { value: ethAmount }),
       truffleAssert.ErrorType.REVERT
@@ -41,7 +41,7 @@ contract('PixilNFT', function ([owner, ...accounts]) {
 
   it('should be able to receive eth for minting', async function() {
     const contractBalance = await web3.eth.getBalance(instance.address)
-    assert.equal(contractBalance, web3.utils.toWei('0.03', 'ether'))
+    assert.equal(contractBalance, web3.utils.toWei('0.015', 'ether'))
   })
 
   it('should be able to withdraw the eth from minting', async function() {
@@ -57,12 +57,12 @@ contract('PixilNFT', function ([owner, ...accounts]) {
     let ownerBalance = await web3.eth.getBalance(owner)
     ownerBalance = Number(ownerBalance)
     initialOwnerBalance = Number(initialOwnerBalance)
-    assert.equal(ownerBalance - initialOwnerBalance + gasCost, payAmount)
+    assert.ok(ownerBalance - initialOwnerBalance + gasCost > payAmount*0.999)
   })
 
   it('should retrieve the uri correctly', async function() {
     const uri = await instance.baseTokenURI()
-    assert.equal(uri, 'https://artillery-api.herokuapp.com')
+    assert.equal(uri, 'https://artillery-api.herokuapp.com/')
   })
 
   it('should be able to update the uri', async function() {
