@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { NFT_ABI, NFT_ADDRESS_ROPSTEN, NFT_ADDRESS_RINKEBY } from 'contract'
+import { NFT_ABI, NFT_ADDRESS_MATIC } from 'contract'
 import styled from 'styled-components'
 
 export const Info = styled.div`
@@ -12,7 +12,7 @@ export const Info = styled.div`
 `
 
 const Button = styled.div`
-  width: 234px;
+  width: 254px;
   height: 76px;
   background: #CFF4FF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -58,7 +58,7 @@ export default function Mint({ setMinted }) {
       setBalance(library.utils.fromWei(balance))
       const instance = new library.eth.Contract(
         NFT_ABI, 
-        NFT_ADDRESS_RINKEBY
+        NFT_ADDRESS_MATIC
       )
       const _totalSupply = await instance.methods.totalSupply().call()
       const _currentTokenId = await instance.methods.currentTokenId().call()
@@ -75,9 +75,9 @@ export default function Mint({ setMinted }) {
       setWaiting(true)
       const instance = new library.eth.Contract(
         NFT_ABI, 
-        NFT_ADDRESS_RINKEBY
+        NFT_ADDRESS_MATIC
       )
-      const ethAmount = library.utils.toWei('0.03', 'ether')
+      const ethAmount = library.utils.toWei('50', 'ether')
       const result = await instance.methods
         .mintTo(account)
         .send({ from: account, value: ethAmount })
@@ -94,7 +94,8 @@ export default function Mint({ setMinted }) {
         console.log(e)
         setMinted(await instance.methods.currentTokenId().call())
       }
-    } catch {
+    } catch (e) {
+      console.log(e)
       setWaiting(false)
       alert('Signing the transaction has failed.')
     }
@@ -110,7 +111,7 @@ export default function Mint({ setMinted }) {
         disabled={!active && !waiting}
       >
         <a>
-          { !waiting ? 'Mint for 0.015 eth' : 'Minting...' }
+          { !waiting ? 'Mint for 50 matic' : 'Minting...' }
         </a>
       </Button>
       <div>
@@ -120,7 +121,7 @@ export default function Mint({ setMinted }) {
       }
       {
         balance && 
-        <Info><b>Balance: </b>{Number(balance).toFixed(3)} ETH</Info>
+        <Info><b>Balance: </b>{Number(balance).toFixed(3)} MATIC</Info>
       }
       {
         pixilsOwned !== null && 

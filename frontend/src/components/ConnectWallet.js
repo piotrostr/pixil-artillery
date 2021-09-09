@@ -31,7 +31,7 @@ const FlexCenter = styled.div`
   flex-direction: column;
 `
 
-const injected = new InjectedConnector({ supportedChainIds: [1, 4] })  
+const injected = new InjectedConnector({ supportedChainIds: [1, 4, 137] })  
 
 export default function ConnectWallet() {
   const { account, active, activate, library } = useWeb3React()
