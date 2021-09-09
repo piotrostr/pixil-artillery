@@ -30,11 +30,23 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 750px) {
+    flex-direction: row;
+  }
 `
 
 const Row = styled.div`
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: 750px) {
+    flex-direction: column;
+  }
+`
+
+const RarityContainer = styled.div`
+  @media screen and (min-width: 750px) {
+    margin-left: 15px;
+  }
 `
 
 export default function Rarity() {
@@ -50,14 +62,14 @@ export default function Rarity() {
           height={567}
           alt={'all-layers'}
         />
-        <div style={{ marginLeft: 15 }}>
+        <RarityContainer>
           <Image
             src={'/rarity.png'}
             width={359}
             height={553}
             alt={'rarity'}
           />
-        </div>
+        </RarityContainer>
       </Row>
         <Column>
           <Image

@@ -7,6 +7,10 @@ const Heading = styled.div`
   line-height: 44px;
   color: #000000;
   margin-bottom: 15px;
+  @media screen and (max-width: 750px) {
+    font-size: 22px;
+    margin-top: 30px;
+  }
 `
 
 const Paragraph = styled.div`
@@ -35,12 +39,19 @@ const Container = styled.div`
   }
   padding-top: 80px;
   margin-bottom: 60px;
+  @media screen and (max-width: 750px) {
+    flex-direction: column;
+  }
 `
 
 const Column = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
+  @media screen and (max-width: 750px) {
+    width: 90%;
+    margin: auto;
+  }
 `
 
 const Arrow = styled.div`
@@ -50,6 +61,9 @@ const Arrow = styled.div`
   color: rgb(206, 244, 255);
   font-size: 90px;
   user-select: none;
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
 `
 
 export default function TextSection() {

@@ -43,8 +43,9 @@ const Heading = styled.div`
   color: #2B2D42;
   position: absolute;
   top: 30px;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 750px) {
     position: unset;
+    font-size: 22px;
   }
 `
 
@@ -56,6 +57,13 @@ const Subheading = styled.div`
   text-align: center;
   color: #000000;
   height: 80px;
+  @media screen and (max-width: 750px) {
+    position: unset;
+    font-size: 22px;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const Paragraph = styled.div`
