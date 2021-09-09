@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Page, Footer } from 'components/styled'
+import Page from 'components/Page'
 import Header from 'components/Header'
 import Link from 'next/link'
 

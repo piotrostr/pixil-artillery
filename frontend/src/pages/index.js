@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Head from 'next/head'
 import Header from 'components/Header'
-import { Page, Footer } from 'components/styled'
+import Page from 'components/Page'
 import HomeView from 'components/HomeView'
 import SampleWeaponsVault from 'components/SampleWeaponsVault'
 import TextSection from 'components/TextSection'
