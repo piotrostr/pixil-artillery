@@ -19,7 +19,7 @@ export default function Marketplace() {
         </Link>
       </div>
       <iframe 
-	src='https://testnets.opensea.io/collection/pixilartillery?embed=true'
+	src='https://opensea.io/collection/pixil-artillery?embed=true'
 	width='100%'
 	height='100%'
 	frameBorder='0'

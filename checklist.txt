@@ -1,5 +1,3 @@
-add mobile scaling
-
 add image background
 
 deploy mainnet customize opensea
