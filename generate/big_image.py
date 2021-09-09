@@ -21,4 +21,4 @@ img = cv2.imread('big_image.png', -1)
 img_hash = hashlib.sha256(img).hexdigest()
 print(f'img hash: {img_hash}')
 
-assert img_hash == '1907d8646d98ab4cde4a20c33d54964c95f3cedf565e7c69bc6c238d48e5d6d5'
+assert img_hash == '79c6c5c6318d8fb943a851dfcdef036c5bae43f221fcf4e9ee436dbbeebb0349'
