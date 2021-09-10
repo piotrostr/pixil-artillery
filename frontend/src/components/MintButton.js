@@ -48,7 +48,7 @@ export default function MintButton() {
           ?  () => setOpen(true)
           :  () => alert('Use desktop to get minting!')
       }>
-        Get started
+        Mint!
       </MintButtonContainer>
       <MintModal isOpen={isOpen} setOpen={setOpen} />
     </div>
