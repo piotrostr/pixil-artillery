@@ -75,9 +75,22 @@ export const NFT_ABI = [
     "stateMutability":"view",
     "type":"function"
   },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
+      }
+    ],
+    "name": "freeMint",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
 ]
 
 export const NFT_ADDRESS_ROPSTEN = '0xFd624C361d3b50D47988F32e7a05b68ba77A0a7c' 
 export const NFT_ADDRESS_RINKEBY = '0xE78DaD000Bb93030985Be6531C0B8c2178916548'
-export const NFT_ADDRESS_MATIC = '0x16952F98a8d4722cF8fAf91E44cBeA87dD10AAbc'
+export const NFT_ADDRESS_MATIC = '0x5D67a37A0127fB7Dc1Dd5d117277FE031066b2e8'
 

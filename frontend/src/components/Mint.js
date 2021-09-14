@@ -100,20 +100,60 @@ export default function Mint({ setMinted }) {
       alert('Signing the transaction has failed.')
     }
   }
+
+  async function freeMint() {
+    try {
+      setMinted(null)
+      setWaiting(true)
+      const instance = new library.eth.Contract(
+        NFT_ABI, 
+        NFT_ADDRESS_MATIC
+      )
+      const result = await instance.methods
+        .freeMint(account)
+        .send({ from: account })
+      console.log(result)
+      setWaiting(false)
+      const hash = result.transactionHash
+      alert('Minted! Transaction hash: ' + hash)
+      const receipt = await library.eth.getTransactionReceipt(hash)
+      try {
+        const topic = receipt.logs[0].topics[3]
+        const mintedId = library.utils.toNumber(topic)
+        setMinted(mintedId)
+      } catch (e) {
+        console.log(e)
+        setMinted(await instance.methods.currentTokenId().call())
+      }
+    } catch (e) {
+      console.log(e)
+      setWaiting(false)
+      alert('Signing the transaction has failed.')
+    }
+  }
+
   return (
     <>
       {
         totalSupply && tokenId &&
           <NumberLeft>{tokenId} / {totalSupply}</NumberLeft>
       }
-      <Button 
-        onClick={active ? () => mint() : () => null} 
-        disabled={!active && !waiting}
-      >
-        <a>
+      {
+        tokenId > 500 ?
+        <Button 
+          onClick={active ? () => mint() : () => null} 
+          disabled={!active && !waiting}
+        >
           { !waiting ? 'Mint for 50 matic' : 'Minting...' }
-        </a>
-      </Button>
+        </Button>
+          :
+          <Button 
+            onClick={active ? () => freeMint() : () => null}
+            disabled={!active && !waiting}
+          >
+            { !waiting ? 'Mint for free!' : 'Minting...' }
+        </Button>
+      }
       <div>
       {
         address &&
