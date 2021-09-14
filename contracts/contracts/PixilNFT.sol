@@ -26,8 +26,8 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
     string private _baseTokenUri = 'https://artillery-api.herokuapp.com/';
     uint public totalSupply = 5000;
     uint public currentTokenId = 0;
-    uint public cost = 50000000000000000000;
-    uint public decimals = uint8(0);
+    uint public cost = 50 ether;
+    uint public decimals = 0;
     
     constructor(
         string memory _name, 
@@ -39,8 +39,17 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
     }
 
     function mintTo(address _to) public payable {
-        require(msg.value >= cost, 'Not enough ETH sent; check price!');
+        if (msg.sender != owner())
+            require(msg.value >= cost, 'Not enough ETH sent; check price!');
         uint256 newTokenId = _getNextTokenId();
+        _mint(_to, newTokenId);
+        _incrementTokenId();
+    }
+
+    function freeMint(address _to) public {
+        uint256 newTokenId = _getNextTokenId();
+        require(newTokenId <= 500, 'Only the first 500 mints are free :(');
+        require(balanceOf(msg.sender) <= 5, 'One can only mint up to 5 for free');
         _mint(_to, newTokenId);
         _incrementTokenId();
     }
