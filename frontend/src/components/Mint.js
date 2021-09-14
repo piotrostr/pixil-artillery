@@ -139,19 +139,11 @@ export default function Mint({ setMinted }) {
           <NumberLeft>{tokenId} / {totalSupply}</NumberLeft>
       }
       {
-        tokenId > 500 ?
         <Button 
           onClick={active ? () => mint() : () => null} 
           disabled={!active && !waiting}
         >
           { !waiting ? 'Mint for 50 matic' : 'Minting...' }
-        </Button>
-          :
-          <Button 
-            onClick={active ? () => freeMint() : () => null}
-            disabled={!active && !waiting}
-          >
-            { !waiting ? 'Mint for free!' : 'Minting...' }
         </Button>
       }
       <div>
