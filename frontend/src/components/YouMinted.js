@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NFT_ABI, NFT_ADDRESS_ROPSTEN, NFT_ADDRESS_RINKEBY } from 'contract'
+import { NFT_ABI, NFT_ADDRESS_ROPSTEN, NFT_ADDRESS_ETHER } from 'contract'
 import { useWeb3React } from '@web3-react/core'
 import Image from 'next/image'
 import { Info } from 'components/Mint'
@@ -16,7 +16,7 @@ export default function YouMinted({ id }) {
   async function getData() {
     const instance = new library.eth.Contract(
       NFT_ABI, 
-      NFT_ADDRESS_RINKEBY
+      NFT_ADDRESS_ETHER
     )
     const baseURI = await instance.methods.baseTokenURI().call()
     const response = await fetch(baseURI + id)

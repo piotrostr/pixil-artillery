@@ -39,7 +39,7 @@ export default function ConnectWallet() {
   return (
     <FlexCenter>
       <div style={{ marginBottom: 25 }}>
-        Please make sure you are on MATIC chain.
+        Please make sure you are on ETH mainnet.
       </div>
       <Button onClick={!active ? () => activate(injected) : () => null}>
         {active ? <div>✅ {account}</div> : 'Connect'}

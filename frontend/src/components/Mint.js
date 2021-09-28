@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { NFT_ABI, NFT_ADDRESS_MATIC } from 'contract'
+import { NFT_ABI, NFT_ADDRESS_ETHER } from 'contract'
 import styled from 'styled-components'
 
 export const Info = styled.div`
@@ -58,7 +58,7 @@ export default function Mint({ setMinted }) {
       setBalance(library.utils.fromWei(balance))
       const instance = new library.eth.Contract(
         NFT_ABI, 
-        NFT_ADDRESS_MATIC
+        NFT_ADDRESS_ETHER
       )
       const _totalSupply = await instance.methods.totalSupply().call()
       const _currentTokenId = await instance.methods.currentTokenId().call()
@@ -75,9 +75,9 @@ export default function Mint({ setMinted }) {
       setWaiting(true)
       const instance = new library.eth.Contract(
         NFT_ABI, 
-        NFT_ADDRESS_MATIC
+        NFT_ADDRESS_ETHER
       )
-      const ethAmount = library.utils.toWei('50', 'ether')
+      const ethAmount = library.utils.toWei('0.03', 'ether')
       const result = await instance.methods
         .mintTo(account)
         .send({ from: account, value: ethAmount })
@@ -107,7 +107,7 @@ export default function Mint({ setMinted }) {
       setWaiting(true)
       const instance = new library.eth.Contract(
         NFT_ABI, 
-        NFT_ADDRESS_MATIC
+        NFT_ADDRESS_ETHER
       )
       const result = await instance.methods
         .freeMint(account)
@@ -143,7 +143,7 @@ export default function Mint({ setMinted }) {
           onClick={active ? () => mint() : () => null} 
           disabled={!active && !waiting}
         >
-          { !waiting ? 'Mint for 50 matic' : 'Minting...' }
+          { !waiting ? 'Mint for 0.03 ETH' : 'Minting...' }
         </Button>
       }
       <div>
@@ -153,7 +153,7 @@ export default function Mint({ setMinted }) {
       }
       {
         balance && 
-        <Info><b>Balance: </b>{Number(balance).toFixed(3)} MATIC</Info>
+        <Info><b>Balance: </b>{Number(balance).toFixed(3)} ETH</Info>
       }
       {
         pixilsOwned !== null && 
