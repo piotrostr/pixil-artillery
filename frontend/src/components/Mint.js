@@ -140,10 +140,20 @@ export default function Mint({ setMinted }) {
       }
       {
         <Button 
-          onClick={active ? () => mint() : () => null} 
+          onClick={
+            active 
+            ? (
+              tokenId > 250 ? () => mint() : () => freeMint()
+            ) : () => null
+          } 
           disabled={!active && !waiting}
         >
-          { !waiting ? 'Mint for 0.03 ETH' : 'Minting...' }
+          { 
+            !waiting 
+              ? (
+                tokenId > 250 ? 'Mint for 0.03 ETH' : 'mint for free!'
+              ) : 'Minting...' 
+          }
         </Button>
       }
       <div>
