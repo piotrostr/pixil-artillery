@@ -143,7 +143,7 @@ export default function Mint({ setMinted }) {
           onClick={
             active 
             ? (
-              tokenId > 250 ? () => mint() : () => freeMint()
+              tokenId >= 250 ? () => mint() : () => freeMint()
             ) : () => null
           } 
           disabled={!active && !waiting}
@@ -151,7 +151,7 @@ export default function Mint({ setMinted }) {
           { 
             !waiting 
               ? (
-                tokenId > 250 ? 'Mint for 0.03 ETH' : 'mint for free!'
+                tokenId >= 250 ? 'Mint for 0.03 ETH' : 'mint for free!'
               ) : 'Minting...' 
           }
         </Button>
