@@ -31,18 +31,24 @@ const FlexCenter = styled.div`
   flex-direction: column;
 `
 
-const injected = new InjectedConnector({ supportedChainIds: [1, 4, 137] })  
+const supportedChainIds = [ 4 ]
+const injected = new InjectedConnector({ supportedChainIds: supportedChainIds })  
 
 export default function ConnectWallet() {
-  const { account, active, activate, library } = useWeb3React()
+  const { account, active, activate, chainId } = useWeb3React()
   const asdf = useWeb3React()
+  console.log(asdf)
   return (
     <FlexCenter>
-      <div style={{ marginBottom: 25 }}>
-        Please make sure you are on ETH mainnet.
-      </div>
       <Button onClick={!active ? () => activate(injected) : () => null}>
-        {active ? <div>✅ {account}</div> : 'Connect'}
+        {
+          active 
+          ? (
+            supportedChainIds.includes(chainId)
+              ? <div>✅ {account}</div> 
+              : <div>❌ Unsupported chain</div>
+          )
+          : 'Connect'}
       </Button>
     </FlexCenter>
   )

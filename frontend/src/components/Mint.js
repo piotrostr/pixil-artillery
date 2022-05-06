@@ -80,7 +80,13 @@ export default function Mint({ setMinted }) {
       const ethAmount = library.utils.toWei('0.03', 'ether')
       const result = await instance.methods
         .mintTo(account)
-        .send({ from: account, value: ethAmount })
+        .send({ 
+          from: account, 
+          value: ethAmount,
+          maxPriorityFeePerGas: null,
+          maxFeePerGas: null,
+          gasLimit: 595976
+        })
       console.log(result)
       setWaiting(false)
       const hash = result.transactionHash

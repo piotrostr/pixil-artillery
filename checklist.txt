@@ -1,4 +1,0 @@
-add image background
-
-deploy mainnet customize opensea
-

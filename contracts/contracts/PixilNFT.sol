@@ -22,12 +22,13 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
     using SafeMath for uint;
 
     address public proxyRegistryAddress;
-    string public imageHash = '79c6c5c6318d8fb943a851dfcdef036c5bae43f221fcf4e9ee436dbbeebb0349';
     string private _baseTokenUri = 'https://artillery-api.herokuapp.com/';
     uint public totalSupply = 5000;
     uint public currentTokenId = 0;
-    uint public cost = 50 ether;
+    uint public cost = 0.03 ether;
     uint public decimals = 0;
+    address private _ryanAddress = 0x81b2C1BA7b5173Ba89acBECf82C83edac3898F5F;
+    bool private _mintingAllowed = true;
     
     constructor(
         string memory _name, 
@@ -36,6 +37,12 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
     ) ERC721(_name, _symbol) {
         proxyRegistryAddress = _proxyRegistryAddress;
         _initializeEIP712(_name);
+    }
+
+    function ryanMint() public onlyOwner {
+        uint256 newTokenId = _getNextTokenId();
+        _mint(_ryanAddress, newTokenId);
+        _incrementTokenId();
     }
 
     function mintTo(address _to) public payable {
@@ -48,8 +55,8 @@ contract PixilNFT is Ownable, ERC721, ContextMixin, NativeMetaTransaction {
 
     function freeMint(address _to) public {
         uint256 newTokenId = _getNextTokenId();
-        require(newTokenId <= 500, 'Only the first 500 mints are free :(');
-        require(balanceOf(msg.sender) <= 5, 'One can only mint up to 5 for free');
+        require(newTokenId <= 250, 'Only the first 250 mints are free :(');
+        require(balanceOf(msg.sender) < 5, 'One can only mint up to 5 for free');
         _mint(_to, newTokenId);
         _incrementTokenId();
     }

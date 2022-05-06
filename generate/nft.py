@@ -1,7 +1,5 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
-
 
 class NFT:
     def __init__(
@@ -63,6 +61,7 @@ class NFT:
             if not ok:
                 raise Exception('saving failed')
         if self.show:
+            import matplotlib.pyplot as plt
             plt.imshow(cv2.cvtColor(self.nft, cv2.COLOR_BGRA2RGBA))
             plt.show()
 
